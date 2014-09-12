@@ -17,7 +17,7 @@ function Update () {
 }
 function OnCollisionEnter(collision : Collision) {
 	var tag = collision.gameObject.tag;
-	if (tag != "Ignore") {
+	if (tag == "Bullet") {
 			
 	
 		health--;

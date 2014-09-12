@@ -1,6 +1,14 @@
 fileFormatVersion: 2
 guid: 9b151cd23a6c54bca960918f8a3f9a6e
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: Lazer Hit Sprite Sheet_0
+    21300002: Lazer Hit Sprite Sheet_1
+    21300004: Lazer Hit Sprite Sheet_2
+    21300006: Lazer Hit Sprite Sheet_3
+    21300008: Lazer Hit Sprite Sheet_4
+    21300010: Lazer Hit Sprite Sheet_5
+    21300012: Lazer Hit Sprite Sheet_6
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -35,6 +43,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 1
   textureType: 8
@@ -54,6 +63,7 @@ TextureImporter:
         height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: Lazer Hit Sprite Sheet_1
       rect:
         serializedVersion: 2
@@ -63,6 +73,7 @@ TextureImporter:
         height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: Lazer Hit Sprite Sheet_2
       rect:
         serializedVersion: 2
@@ -72,6 +83,7 @@ TextureImporter:
         height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: Lazer Hit Sprite Sheet_3
       rect:
         serializedVersion: 2
@@ -81,6 +93,7 @@ TextureImporter:
         height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: Lazer Hit Sprite Sheet_4
       rect:
         serializedVersion: 2
@@ -90,6 +103,7 @@ TextureImporter:
         height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: Lazer Hit Sprite Sheet_5
       rect:
         serializedVersion: 2
@@ -99,6 +113,7 @@ TextureImporter:
         height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
     - name: Lazer Hit Sprite Sheet_6
       rect:
         serializedVersion: 2
@@ -108,5 +123,6 @@ TextureImporter:
         height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

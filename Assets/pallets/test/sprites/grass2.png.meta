@@ -1,6 +1,8 @@
 fileFormatVersion: 2
 guid: 8e27cd44d2a524fb0ba98e3c0924ebbc
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: grass2
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -35,6 +37,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 6
   spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 32
   alphaIsTransparency: 1
   textureType: 8
