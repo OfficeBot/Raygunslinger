@@ -1,4 +1,9 @@
 ﻿#pragma strict
+/*
+	VISUAL DEBUG ELEMENTS
+*/
+var showEdges  = false;
+
 
 var visualObject : GameObject;
 var magnitude : float = 1.0;
@@ -27,7 +32,17 @@ private var mapHeights : float[,];
 	That means gradientValue and gradientThisRow are just for testing.
 */
 var gradientValue : float;
-private var heightLookups = [-1, 1, 1, 1, 2, 2, 3, 3, 4, 10];
+private var heightLookups = [1, 1, 1, 1, 3, 3, 4, 4, 5, 6];
+// private var cliffs = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ];
+var materials : Material[] = new Material[10];
+var cliffMaterial : Material;
+/*
+	This variables are here just to help visualize the map. Once we
+	have proper textures, these should be removed/updated.
+	We will be using the same dynamic texture method that is shown in
+	the perlin noise tutorial on Unity's scripting guide.
+*/
+
 
 function Start () {
 	//Initialize our multidimensional array. It's important to know that
@@ -48,10 +63,10 @@ function Start () {
 
 	*/
 
-	mapHeights = new float[100,100];
-	mapWidth = 100;
-	mapHeight = 100;
-	gradientValue = 1.0 / mapHeight; //or mapwidth, if that's our direction;
+	mapHeights = new float[200,200];
+	mapWidth = 200;
+	mapHeight = 200;
+	gradientValue = 2.0 / mapHeight; //or mapwidth, if that's our direction;
 
 	CalcNoise();
 }
@@ -67,20 +82,32 @@ function CalcNoise() {
 			var xCoord = xOrg + x / mapWidth * scale;
 			var yCoord = yOrg + y / mapHeight * scale;
 			var sample = Mathf.PerlinNoise(xCoord, yCoord);
-			mapHeights[xCoord,yCoord] = sample;
-			// var yCoordNormal :int = Mathf.Floor(sample * 10 * gradientThisRow);
-			// var yCoordNormal : int = Mathf.Floor(sample * 10) + (gradientValue * x);
-			// Debug.Log(yCoordNormal);
-			var yCoordNormal : int = Mathf.Lerp(Mathf.Floor(sample*10) * (gradientValue*x), 10, gradientValue * x);
+			sample += (gradientValue * x) - 1;
+			sample = Mathf.Clamp(sample, 0.0, 1.0);
+			sample = Mathf.Floor( sample * 9.0 );
+			var yValue = heightLookups[sample];
+			//Do we need a cliff? Check the tile that's further down.
+			//Make sure this isn't our bottom row, since that would give us an 
+			//out-of-bounds error.
+			var offset = 0;
+			var tile : GameObject;
 
-			// var yCoordNormal : int = Mathf.Lerp( Mathf.Round((gradientValue * x ) +sample), Mathf.Round(gradientValue * x  * sample), );
-			// yCoordNormal += Mathf.Floor(gradientValue * x * 10);
-			// yCoordNormal = Mathf.Clamp(yCoordNormal, 0,9);
-			var ySet = heightLookups[yCoordNormal];
-			if (yCoordNormal != 0) {
-				Instantiate(visualObject, Vector3(x, ySet , y), Quaternion.identity);
+			if (x > 0 && mapHeights[x-1,y] < yValue) {
+				//THIS IS A CLIFF
+				offset = yValue - mapHeights[x-1,y];
+				// Debug.Log(offset);
+				// if (showEdges) {
+				// tile = Instantiate(visualObject, Vector3(x+offset, 1 , y), Quaternion.identity);
+				// tile.renderer.material = cliffMaterial;
+				// }
+			} else {
+				tile = Instantiate(visualObject, Vector3(x+offset, 0 , y), Quaternion.identity);
+				tile.renderer.material = materials[sample];
+
 			}
-			// gradientThisRow += gradientValue;
+			if (x+offset < mapHeight) {
+				mapHeights[x+offset,y] = yValue;
+			}
 		};
 	}
 }

@@ -1,0 +1,11 @@
+- generate perlin noise
+- gradient over perlin noise
+- mosaic over perlin noise (convert to grid)
+- hard limit over that (10 colors)
+- assign colors/textures to those 10 colors
+- layer each color/texture as it's own layer in order
+- displace layers with cliffside textures
+
+- render as the background of the game
+- assign collisions based on layering system
+- playtest
